@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <login></login>
+    <login></login>
+    <login></login>
+    <login></login>
+    <login></login>
+  </div>
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+<script>
+  // 定义组件并注册
+  Vue.component('login',{
+    template:`<div>用户名:<input type="text" name="" v-model="name">
+                      密码:<input type="text" name="">
+                      年龄:<input type="text" name="">
+                      <button @click='tips()'>提交</button></div>`,
+    data:function(){
+      return {
+        name:'金毛狮王',
+      }
+    },
+    methods:{
+      tips:function(){
+          console.log('哈哈哈哈');
+        }
+    }                       
+  });
+  // 创建跟实例对象
+  var vm = new Vue({
+    el:'#app',
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- mvvm中的view -->
+  <div id="app">
+    <p v-bind:title='tip'>{{message}}</p>    
+    <div v-html='name'></div>
+    <button @click='change()'>点我点我</button>
+    <img v-bind:src="pic" alt="">
+  </div>
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>  
+<script>
+  // mvvm中的vm
+  var vm = new Vue ({
+    el:'#app',
+    data:{
+      message:'你好世界!',
+      tip:'欢迎使用vue,现在是北京时间:'+new Date().toLocaleString(),
+      name:'<h1>hello World</h1>',
+      pic:'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3962631112,775005419&fm=27&gp=0.jpg'
+    },
+    methods:{
+      change:function(){
+        this.$data.message = '你好妹子!'
+      }
+    }
+  });
+</script>
+</body>
+</html>

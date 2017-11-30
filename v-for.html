@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for='(item,index) in items' :key='item.id'>{{item.name}}--{{item.age}}--{{index+1}}</li>
+    </ul>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        items:[{id:1,name:'张无忌',age:22},
+                {id:2,name:'周芷若',age:22},
+                {id:3,name:'金毛狮王',age:54}]
+      }
+    });
+  </script>
+</body>
+</html>

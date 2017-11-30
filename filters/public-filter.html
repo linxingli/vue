@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 金毛狮王的模板 -->
+  <template id="temp">
+    <div>用户名:<input type="text" name="">
+      密码:<input type="text" name="">
+      年龄:<input type="text" name="">
+      <button @click='tips()'>提交</button>
+      <p>{{message | toLc}}</p>
+    </div>
+  </template>
+  <template id="temp1">
+    <ul>
+      <li v-for='(item,index) in items'>{{index+1}}.{{item.title | toLc}}</li>
+    </ul>
+  </template>
+  <div id="app">
+    <!-- 金毛狮王 -->
+    <login></login>
+    <br>
+    <!-- news -->
+    <news></news>
+  </div>
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>  
+<script>
+  // 定义并注册金毛狮王的组件
+  Vue.component('login',{
+    template:'#temp',
+    data:function(){
+      return {
+        message:'HELLO GIRL!'
+      }
+    }
+  });
+  // 定义news的组件
+  Vue.component('news',{
+    template:"#temp1",
+    data:function(){
+      return {
+        items:[{title:'北京强清,丧尽天良'},
+              {title:'三色集团突然被和谐处理'},
+            {title:'王尼玛被封杀!!!!!!!!'},
+            {title:'Wellcom To Beijing!!!shift'}]
+      }
+    }
+  });
+  // 定义一个全局过滤器 (转换小写)
+  Vue.filter('toLc',function(input){
+    return input.toLowerCase();
+  });
+  // 创建一个实例对象 解析#app的内容
+  var vm = new Vue({
+    el:'#app'
+  });
+</script>
+</body>
+</html>

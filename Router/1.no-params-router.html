@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- mvvm中的view -->
+  <div id="app">
+    <h1>Hello App!</h1>
+    <p>
+      <!-- 使用 router-link 组件来导航. -->
+      <!-- 通过传入 `to` 属性指定链接. -->
+      <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+      <router-link to="/goodslist">商品部分</router-link>
+      <router-link to="/newslist">新闻中心</router-link>
+    </p>
+    <!-- 路由出口 -->
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-view></router-view>
+  </div>
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+<script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.js"></script>
+<script>
+  // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
+
+// 1. 定义（路由）组件。
+// 可以从其他文件 import 进来
+const goodslist = { template: '<div><div><router-link to="/newsdetail/10001">ikbc机械键盘299</router-link></div><div><router-link to="/newsdetail/10002">logitech无线鼠标MX大师599</router-link></div><div>黑寡妇机械键盘899</div></div>' }
+const newslist = { template: '<div><div>北京强清,影响恶劣</div><div>深圳前端基本饱和,黑马学生组队去菲律宾</div><div>冷空气来临,一夜骤减30度</div></div>' }
+var newsDetailComponent = {
+        template:"<div>这里是商品详情组件 {{ $route.params.newsId }}</div>"
+    }
+// 2. 定义路由
+// 每个路由应该映射一个组件。 其中"component" 可以是
+// 通过 Vue.extend() 创建的组件构造器，
+// 或者，只是一个组件配置对象。
+// 我们晚点再讨论嵌套路由。
+const routes = [
+{ path: '/', redirect: '/goodslist' },
+  { path: '/goodslist', component: goodslist },
+  { path: '/newslist', component: newslist },
+  { path: '/newsdetail/:newsId', component: newsDetailComponent }
+];
+
+// 3. 创建 router 实例，然后传 `routes` 配置
+// 你还可以传别的配置参数, 不过先这么简单着吧。
+const router = new VueRouter({
+  routes // （缩写）相当于 routes: routes
+});
+
+// 4. 创建和挂载根实例。
+// 记得要通过 router 配置参数注入路由，
+// 从而让整个应用都有路由功能
+const app = new Vue({
+  router
+}).$mount('#app');
+
+// 现在，应用已经启动了！
+  
+</script>  
+</body>
+</html>
